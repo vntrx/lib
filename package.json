@@ -1,0 +1,42 @@
+{
+  "name": "lib",
+  "version": "1.0.7",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "start": "turbo run start",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "lint:fix": "turbo run lint:fix",
+    "lint-staged": "lint-staged",
+    "prepare": "husky install",
+    "gen:component": "hygen component new"
+  },
+  "engines": {
+    "node": "^18.17.0",
+    "npm": "Para esse projeto você deve utilizar o yarn"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/config/*",
+    "packages/shared/*"
+  ],
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.6",
+    "@commitlint/config-conventional": "^17.6.6",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
+    "turbo": "1.10.4"
+  },
+  "lint-staged": {
+    "apps/**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=5",
+      "prettier -w"
+    ],
+    "apps/**/*.{json,css,scss,md,webmanifest}": [
+      "prettier -w"
+    ]
+  }
+}
